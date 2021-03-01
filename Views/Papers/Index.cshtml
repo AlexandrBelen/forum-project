@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication3.Models.Paper>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Create post</a>
+</p>
+
+<ul>
+    @foreach (var item in Model)
+    {
+    <li class="paper">
+        <i>@Html.DisplayFor(modelItem => item.Author.Email)</i> @Html.DisplayFor(modelItem => item.DateTime)<br />
+        <a type="text/html" class="paper-title display-4"
+           asp-action="Details" asp-route-id="@item.ID">
+            @Html.DisplayFor(modelItem => item.Title)
+        </a>
+        <br />
+        <p class="paper-intro">
+            @Html.DisplayFor(modelItem => item.Intro)
+        </p>
+        <a type="button" class="btn btn-outline-secondary" 
+           asp-action="Details" asp-route-id="@item.ID">Read</a>
+        <hr class="row"/>
+    </li>
+    }
+
+</ul>
